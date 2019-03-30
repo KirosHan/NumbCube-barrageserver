@@ -4,6 +4,7 @@ var certificate = fs.readFileSync('cert/server.onsigma.com.crt', 'utf8');
 var credentials = {key: privateKey, cert: certificate};
 var app = require('express')(),
     server = require('https').createServer(credentials,app),
+    //如不用ssl的话 ：server = require('http').createServer(app),
     io = require('socket.io').listen(server);
 var moment = require('moment');
 moment.locale('zh-cn');
