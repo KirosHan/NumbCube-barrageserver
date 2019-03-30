@@ -17,32 +17,34 @@ var time = gettime();
         json += d;
     });
     res.on('end',function(){
-        //»ñÈ¡µ½µÄÊı¾İ
+        //è·å–åˆ°çš„æ•°æ®
         json = JSON.parse(json);
 	
 if(json && Array.isArray(json) && json.length > 0)
 {
 		json.forEach((v, i) => {
 			if(json[i].needconvert == 0){
-				cmd.run('start ffmpeg -re -i '+json[i].movie_path+' -c copy -f flv rtmp://192.168.0.222/numblive/'+json[i].stream);
+				cmd.run('start ffmpeg -re -i '+json[i].movie_path+' -c copy -f flv rtmp://127.0.0.1/numblive/'+json[i].stream);
 				console.log('['+time+']Scene['+json[i].scene_id+']begin to play--'+json[i].movie_path+'--'+json[i].stream);
 				(async() => {
 				await delay(15000);
-				cmd.run('start ffmpeg -re -i rtmp://127.0.0.1/numblive/'+json[i].stream+' -map 0 -c copy -f flv rtmp://push.numbcube.com/live/'+json[i].stream);
-
-				console.log('['+time+']Scene['+json[i].scene_id+']begin to sent to cdn --'+json[i].stream);
+				//15ç§’åè½¬å‘æµåˆ°cdnæœåŠ¡å™¨
+				//cmd.run('start ffmpeg -re -i rtmp://127.0.0.1/numblive/'+json[i].stream+' -map 0 -c copy -f flv rtmp://push.numbcube.com/live/'+json[i].stream);
+				
+				//console.log('['+time+']Scene['+json[i].scene_id+']begin to sent to cdn --'+json[i].stream);
 				setplay(json[i].scene_id);	
 				})();
 
 				
 			}
-			else{
-				cmd.run('start ffmpeg -re -i '+json[i].movie_path+' -c:v libx264 -preset superfast -tune zerolatency -c:a aac -ar 44100 -f flv rtmp://192.168.0.222/numblive/'+json[i].stream);
+			else{//éh.264+aacç¼–ç æ–‡ä»¶éœ€è¦è½¬ç åæ¨æµ
+				cmd.run('start ffmpeg -re -i '+json[i].movie_path+' -c:v libx264 -preset superfast -tune zerolatency -c:a aac -ar 44100 -f flv rtmp://127.0.0.1/numblive/'+json[i].stream);
 				console.log('['+time+']Scene['+json[i].scene_id+']begin to play--'+json[i].movie_path+'--'+json[i].stream);
 				(async() => {
 				await delay(15000);
-				cmd.run('start ffmpeg -i rtmp://127.0.0.1/numblive/'+json[i].stream+' -c copy -f flv rtmp://push.numbcube.com/live/'+json[i].stream);
-				console.log('['+time+']Scene['+json[i].scene_id+']begin to sent to cdn --'+json[i].stream);
+				//15ç§’åè½¬å‘æµåˆ°cdnæœåŠ¡å™¨
+				//cmd.run('start ffmpeg -i rtmp://127.0.0.1/numblive/'+json[i].stream+' -c copy -f flv rtmp://push.numbcube.com/live/'+json[i].stream);
+				//console.log('['+time+']Scene['+json[i].scene_id+']begin to sent to cdn --'+json[i].stream);
 				setplay(json[i].scene_id);
 				})();	
 			}
@@ -50,7 +52,7 @@ if(json && Array.isArray(json) && json.length > 0)
 	}
 	else
 	{
-		console.log('ÎŞÊı¾İ');
+		console.log('æ— æ•°æ®');
 	}
 	
 
@@ -102,7 +104,7 @@ var time = gettime();
         json += d;
     });
     res.on('end',function(){
-        //»ñÈ¡µ½µÄÊı¾İ
+        //è·å–åˆ°çš„æ•°æ®
         json = JSON.parse(json);
 	
 if(json && Array.isArray(json) && json.length > 0)
@@ -114,7 +116,7 @@ if(json && Array.isArray(json) && json.length > 0)
 	}
 	else
 	{
-		console.log('ÎŞ·µ»ØÊı¾İ');
+		console.log('æ— è¿”å›æ•°æ®');
 	}
 	
 
