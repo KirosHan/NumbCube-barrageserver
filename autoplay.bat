@@ -1,2 +1,0 @@
-node autoplay.js
-pause
