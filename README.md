@@ -6,7 +6,7 @@ numbcube系统监控及自动推流模块
 
 # 使用方法
 * 确保已安装nodejs
-* 确保已安装相应npm模块`npm install https``npm install moment``npm install node-schedule``npm install node-cmd``npm instal async`
+* 确保已安装相应npm模块`npm install https` `npm install moment` `npm install node-schedule` `npm install node-cmd` `npm instal async`
 * 本模块需要结合NumbCube系统使用，使用前请先配置好Numbcube主体，确保接口可以正常调用
 * 修改本程序内推流地址
 * 开始运行
