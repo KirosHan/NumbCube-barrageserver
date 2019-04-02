@@ -1,6 +1,10 @@
 # NumbCuve - barrageserver
 numbcube弹幕服务器模块
 
+# 开源协议License
+[![LICENSE](https://img.shields.io/badge/license-MIT%20(The%20996%20Prohibited%20License)-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE) See [LICENSE](
+https://github.com/996icu/996.ICU/blob/master/LICENSE)  for details.
+
 # 运行原理
 本程序监听端口用于建立socketio长连接
 
